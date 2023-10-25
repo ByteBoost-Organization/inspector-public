@@ -28,5 +28,4 @@ export declare class ByteBoost {
     cleanup(): Promise<void>;
     getObfuscateLevel(): number;
 }
-export declare const wrapWindow: () => void;
 export {};
