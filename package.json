@@ -9,7 +9,8 @@
     "dist/**/*"
   ],
   "scripts": {
-    "deploy": "git add . && git commit -am \"commit\" && git push"
+    "deploy1": "git add . && git commit -am \"commit\" && git push",
+    "deploy": "git add . && git commit -am \"commit\" && git push && npm version patch && git push && npm publish"
   },
   "devDependencies": {
     "@types/node": "^20.5.0",
