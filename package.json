@@ -1,5 +1,5 @@
 {
-  "name": "inspector-public",
+  "name": "@byteboost/inspector-public",
   "version": "1.0.1",
   "description": "",
   "main": "./dist/index.js",
