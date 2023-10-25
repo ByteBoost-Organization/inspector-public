@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.beforeMiddlewares=void 0;const useEventWait=e=>0===e.delay.toWait||(e.delay.waited=e.delay.waited+(Date.now()-e.delay.lastPoll),e.delay.lastPoll=Date.now(),e.delay.waited>e.delay.toWait);exports.beforeMiddlewares=[useEventWait];
