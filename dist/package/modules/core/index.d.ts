@@ -22,17 +22,26 @@ interface RequestsEvent extends BaseEvent {
 interface RequestEvent extends BaseEvent {
     request: RequestInfo;
 }
+interface MetaUpdate extends BaseEvent {
+    screen?: {
+        width: number;
+        height: number;
+    };
+    when: number;
+}
 interface IState extends BaseModuleState {
     navigations: Navigation[];
     currentPath: PathInfo;
     clicks: ClickAction[];
     screenshots: Screenshot[];
     requests: RequestEvent[];
+    metaUpdates: MetaUpdate[];
 }
 export declare class Core extends BaseDataModule<IState> {
     networkTracker: WorkerHandler;
     lastScreenshotTime: number;
     private _obfuscateLevel;
+    lastMetaScreen: MetaUpdate["screen"];
     constructor();
     get obfuscateLevel(): number;
     handlePath(): void;
@@ -44,6 +53,7 @@ export declare class Core extends BaseDataModule<IState> {
     boundedClickListener(evt: MouseEvent): void;
     captureScreenshot(force?: boolean): Promise<void>;
     handleRequests(payload: RequestsEvent): void;
+    handleWindowSize(): void;
     boot(): void;
     formatSyncData(): Record<string, any>;
     onSync(payload: SyncRequestPayload<IState>): void;
@@ -60,6 +70,7 @@ export declare class Core extends BaseDataModule<IState> {
         clicks: never[];
         screenshots: never[];
         requests: never[];
+        metaUpdates: never[];
     };
 }
 export {};

@@ -1,6 +1,6 @@
 import type { EventBus } from "./eventBus";
 import { RequestCallback } from "./request";
-import { BaseEvent } from "./eventBus/types";
+import { BaseEvent, EventListenerMethod } from "./eventBus/types";
 export interface BaseModuleState {
     updated: number;
 }
@@ -16,6 +16,8 @@ export declare abstract class BaseModule<ModuleState extends BaseModuleState> {
     get byteboost(): import("../engine").ByteBoost;
     bindEventBus(eventBus: EventBus): void;
     get eventBus(): EventBus;
+    emit<PayloadType extends BaseEvent>(id: string, payload: PayloadType): void;
+    on<PayloadType extends BaseEvent>(id: string, cb: EventListenerMethod<PayloadType>): void;
     onPoll(): void;
     receivePolls(): void;
     abstract boot(): void;

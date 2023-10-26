@@ -1,6 +1,5 @@
 import { BaseDataModule, BaseModule, BaseModuleState, SyncRequestPayload } from "../";
-import { BaseEvent, BeforeMiddleware } from "./types";
-type EventListenerMethod<PayloadType> = ((payload: PayloadType) => void) | ((payload: PayloadType) => Promise<void>);
+import { BaseEvent, BeforeMiddleware, EventListenerMethod } from "./types";
 interface IData extends BaseModuleState {
     eventQueue: ByteEvent<any>[];
     processingEvents: ByteEvent<any>[];
