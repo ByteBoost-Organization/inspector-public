@@ -16,6 +16,12 @@ interface Screenshot extends BaseEvent {
     when: number;
     where: string;
 }
+interface ScreenshotInTransport {
+    when: number;
+    where: string;
+    document: Uint8Array;
+    obfuscateLevel: number;
+}
 interface RequestsEvent extends BaseEvent {
     requests: RequestInfo[];
 }
@@ -53,6 +59,7 @@ export declare class Core extends BaseDataModule<IState> {
     getAppropriateClickEvent(evt: MouseEvent, when?: number): BaseClickEvent;
     boundedClickListener(evt: MouseEvent): void;
     captureScreenshot(force?: boolean): Promise<void>;
+    onScreenshotFromWorker(payload: ScreenshotInTransport): void;
     handleRequests(payload: RequestsEvent): void;
     handleWindowSize(): void;
     boot(): void;
