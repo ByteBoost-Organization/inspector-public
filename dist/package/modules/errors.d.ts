@@ -22,6 +22,7 @@ export declare class ErrorModule extends BaseDataModule<IState> {
     processError(err: BaseError): void;
     handledRejectionError(evt: Event): void;
     unhandledRejectionError(evt: PromiseRejectionEvent): void;
+    cleanup(): void;
     boot(): void;
     formatSyncData(): IState | {
         _empty: boolean;
@@ -30,6 +31,5 @@ export declare class ErrorModule extends BaseDataModule<IState> {
     build(): {
         errors: never[];
     };
-    onOutsideError(): void;
 }
 export {};
