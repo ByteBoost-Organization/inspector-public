@@ -88,6 +88,7 @@ export declare class Logger extends BaseDataModule<IData> {
     formatSyncData(): ISyncData | null | SyncDataOptions;
     onSync(payload: SyncRequestPayload<IData>): void;
     boot(): void;
+    obfuscateLogDetail(logDetail: LogDetail): LogDetail;
     handleMemoryFor(key: ConsoleType): void;
     trackLog(kind: ConsoleType, ...rest: any[]): Promise<void>;
 }

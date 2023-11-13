@@ -48,6 +48,7 @@ export declare class Core extends BaseDataModule<IState> {
     screenshotWorker: WebWorker;
     lastScreenshotTime: number;
     private _obfuscateLevel;
+    private _syncStatus;
     lastMetaScreen: MetaUpdate["screen"];
     constructor();
     get obfuscateLevel(): number;
