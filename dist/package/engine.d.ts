@@ -9,6 +9,7 @@ export declare class ByteBoost {
     private apiKey;
     private obfuscateLevel;
     private doFullByteBoostRestart;
+    private _devMode;
     constructor(options: {
         apiKey: string;
         startByteboost: () => void;
