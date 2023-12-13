@@ -40,6 +40,7 @@ export declare class WebWorker {
     constructor(name: keyof typeof WEB_WORKERS_URL);
     emit<PayloadType>(id: string, payload: PayloadType): void;
     on<PayloadType>(id: string, cb: (payload: PayloadType) => void): void;
+    kill(): void;
     start(): void;
     getWorkerUrl(): string;
 }

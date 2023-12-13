@@ -1,5 +1,5 @@
 import { BaseDataModule, BaseModuleState, SyncDataOptions, SyncRequestPayload } from ".";
-import { Core } from "./core";
+import { Navigations } from "./navigations";
 import { BaseEvent } from "./eventBus/types";
 export interface LogDetail extends BaseEvent {
     value: any[];
@@ -79,17 +79,17 @@ export declare class Logger extends BaseDataModule<IData> {
     minLogsLength: number;
     maxLogsLength: number;
     bindedConsoleMethods: ConsoleType[];
-    core?: Core;
+    navigations?: Navigations;
     constructor();
-    build(): {};
     cleanCircularLogObjects(): void;
-    cleanup(): void;
-    pack(): Promise<IData>;
-    formatSyncData(): ISyncData | null | SyncDataOptions;
-    onSync(payload: SyncRequestPayload<IData>): void;
-    boot(): void;
     obfuscateLogDetail(logDetail: LogDetail): LogDetail;
     handleMemoryFor(key: ConsoleType): void;
     trackLog(kind: ConsoleType, ...rest: any[]): Promise<void>;
+    boot(): void;
+    build(): {};
+    pack(): Promise<IData>;
+    cleanup(): void;
+    formatSyncData(): ISyncData | null | SyncDataOptions;
+    onSync(payload: SyncRequestPayload<IData>): void;
 }
 export {};

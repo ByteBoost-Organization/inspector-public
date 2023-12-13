@@ -1,6 +1,6 @@
-import type { IPersistantData } from "./types";
+import type { IPersistantData, Painpoint } from "./types";
 import { IModules } from "./types";
-export declare const BASE_API_URL = "https://external.api.byteboost.io";
+export declare const BASE_API_URL = "https://dev.external.api.byteboost.io";
 export declare class ByteBoost {
     modules: IModules;
     performance: typeof window.performance;
@@ -8,14 +8,20 @@ export declare class ByteBoost {
     initializedAt: number;
     private apiKey;
     private obfuscateLevel;
-    private doFullByteBoostRestart;
     private _devMode;
+    minified: boolean;
+    painpoints: Painpoint[];
     constructor(options: {
         apiKey: string;
         startByteboost: () => void;
         obfuscateLevel: number;
+        painpoints: Painpoint[];
+        minified: boolean;
     });
+    handleModuleSync(ifCanSendImmediately?: boolean): void;
     initializeModules(): void;
+    isGatheringSession: boolean;
+    unminify(): Promise<void>;
     getModule<Module>(namespace: keyof IModules): Module | undefined;
     getApiKey(): string;
     debug(...rest: any[]): void;
@@ -24,9 +30,7 @@ export declare class ByteBoost {
     error(...rest: any[]): void;
     compilePersistantData(): Promise<IPersistantData>;
     purge(): Promise<void>;
-    forceReload(): Promise<void>;
     getPersistantData(): IPersistantData | false;
     cleanup(): Promise<void>;
     getObfuscateLevel(): number;
 }
-export {};

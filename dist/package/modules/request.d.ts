@@ -19,10 +19,10 @@ export declare class RequestModule extends BaseModule<IData> {
     private persistantHeaders;
     lastPostTimestamp: number;
     constructor();
-    boot(): void;
     isSuccessResponse(status: number): boolean;
     post(path: string, body: any): Promise<RequestCallback>;
     get(path: string): Promise<RequestCallback>;
+    boot(): void;
     build(): IData | Partial<IData>;
 }
 export {};

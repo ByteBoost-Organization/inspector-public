@@ -18,3 +18,21 @@ export interface IModules {
 export interface IPersistantData {
     [key: keyof IModules]: any;
 }
+export type ComparisonPainpoint = {
+    kind: "comparison";
+    comparisons: Array<{
+        getter: string;
+        matcher: any;
+    }>;
+};
+export type CountPainpoint = {
+    count: number;
+    kind: "count";
+};
+export type Painpoint = {
+    event: {
+        namespace: string;
+        name: string;
+    };
+    kind: "count" | "comparison";
+} & (CountPainpoint | ComparisonPainpoint);

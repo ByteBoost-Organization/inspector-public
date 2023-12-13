@@ -1,5 +1,6 @@
-import { BaseDataModule, BaseModule, BaseModuleState, SyncRequestPayload } from "../";
+import { BaseModule, BaseModuleState, SyncRequestPayload } from "../";
 import { BaseEvent, BeforeMiddleware, EventListenerMethod } from "./types";
+import { EventBusWatcher } from "./watcher";
 interface IData extends BaseModuleState {
     eventQueue: ByteEvent<any>[];
     processingEvents: ByteEvent<any>[];
@@ -45,14 +46,14 @@ export declare class ByteEvent<PayloadType extends BaseEvent> {
     wait(ms: number): this;
     copy(): ByteEvent<PayloadType>;
 }
-export declare class EventBus extends BaseDataModule<IData> {
+export declare class EventBus extends BaseModule<IData> {
     polling: boolean;
     middlewares: {
         before: Array<BeforeMiddleware>;
         after: Array<any>;
     };
     modulesToPoll: BaseModule<any>[];
-    private _poll;
+    watcher: EventBusWatcher;
     private _garbage;
     constructor();
     toByteId(app: string, id: string): string;
@@ -70,21 +71,17 @@ export declare class EventBus extends BaseDataModule<IData> {
     private dispatchNextProcessedEvent;
     private poll;
     declareGarbage(app: string, id: string): void;
-    formatSyncData(): {
-        handledEvents: any;
-    };
-    onSync(payload: SyncRequestPayload<IData>): void;
     private removeHandledEvents;
     private getHandledEvent;
     cleanSyncedData<Type extends BaseEvent[]>(data: Type, payload: SyncRequestPayload<any>): Type;
-    boot(): void;
-    cleanup(): void;
     isGarbageEvent(event: ByteEvent<any>): boolean;
     removeGarbageEvents(queue: ByteEvent<any>[]): ByteEvent<any>[];
     packEventList(list: ByteEvent<any>[]): ByteEvent<any>[];
     unpackEventList(list?: ByteEvent<any>[]): ByteEvent<{}>[];
-    pack(): Promise<IData>;
+    boot(): void;
     unpack(data: IData): void;
     build(): IData | Partial<IData>;
+    pack(): Promise<IData>;
+    cleanup(): void;
 }
 export {};

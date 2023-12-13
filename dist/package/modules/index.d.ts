@@ -11,12 +11,13 @@ export declare abstract class BaseModule<ModuleState extends BaseModuleState> {
     state: ModuleState;
     namespace: string;
     isPolling: boolean;
+    isDataModule: boolean;
     private _eventBus;
     constructor(namespace: string);
     get byteboost(): import("../engine").ByteBoost;
     bindEventBus(eventBus: EventBus): void;
     get eventBus(): EventBus;
-    emit<PayloadType extends BaseEvent>(id: string, payload: PayloadType): void;
+    emit<PayloadType extends BaseEvent>(id: string, payload: PayloadType, priority?: number): void;
     on<PayloadType extends BaseEvent>(id: string, cb: EventListenerMethod<PayloadType>): void;
     onPoll(): void;
     receivePolls(): void;
@@ -40,14 +41,15 @@ export interface SyncRequestPayload<T extends BaseModuleState> extends BaseEvent
 export declare abstract class BaseDataModule<ModuleState extends BaseModuleState> extends BaseModule<ModuleState> {
     syncPathName: string;
     isDataModule: boolean;
-    isSyncActive: boolean;
+    canSync: boolean;
     constructor(namespace: string);
     abstract onSync(payload: SyncRequestPayload<ModuleState>): void;
-    initialize(): void;
     formatSyncData(): Partial<ModuleState> | SyncDataOptions | any | null;
     baseFormatSyncData(bus: EventBus): SyncData<Partial<ModuleState>> | null;
-    sync(bus: EventBus): void;
-    doSync(): void;
+    sync(bus: EventBus, sendImmediately?: boolean): void;
+    stopSync(): void;
+    startSync(sendImmediately?: boolean): void;
+    doSync(sendImmediately?: boolean): void;
     forceSend(): Promise<void>;
 }
 export {};
