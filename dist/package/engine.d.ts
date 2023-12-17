@@ -33,6 +33,7 @@ export declare class ByteBoost {
     purge(): Promise<void>;
     getPersistantData(): IPersistantData | false;
     logStateItems(): void;
+    getDump(): Promise<void>;
     cleanup(): Promise<void>;
     getObfuscateLevel(): number;
 }
