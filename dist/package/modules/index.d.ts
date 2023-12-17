@@ -43,6 +43,7 @@ export interface SyncRequestPayload<T extends BaseModuleState> extends BaseEvent
 }
 export declare abstract class BaseDataModule<ModuleState extends BaseModuleState> extends BaseModule<ModuleState> {
     syncPathName: string;
+    didLastRequestSucceed: boolean;
     isDataModule: boolean;
     canSync: boolean;
     constructor(namespace: string);
