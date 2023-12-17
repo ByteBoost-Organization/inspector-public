@@ -5,12 +5,20 @@ interface Screenshot extends BaseEvent {
     compressed: string;
     when: number;
     where: string;
+    viewport: {
+        width: number;
+        height: number;
+    };
 }
 interface ScreenshotInTransport {
     when: number;
     where: string;
     document: Uint8Array;
     obfuscateLevel: number;
+    viewport: {
+        width: number;
+        height: number;
+    };
 }
 interface IState extends BaseModuleState {
     screenshots: Screenshot[];
@@ -21,6 +29,10 @@ export declare class Screenshots extends BaseDataModule<IState> {
     private _obfuscateLevel;
     constructor();
     get obfuscateLevel(): number;
+    getViewport(): {
+        width: number;
+        height: number;
+    };
     captureScreenshot(force?: boolean): Promise<void>;
     onScreenshotFromWorker(payload: ScreenshotInTransport): void;
     boot(): void;
