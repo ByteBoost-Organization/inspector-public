@@ -20,6 +20,7 @@ export declare class ByteBoost {
     });
     handleModuleSync(ifCanSendImmediately?: boolean): void;
     initializeModules(): void;
+    onEventBusPoll(): void;
     isGatheringSession: boolean;
     unminify(): Promise<void>;
     getModule<Module>(namespace: keyof IModules): Module | undefined;

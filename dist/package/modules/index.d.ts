@@ -1,6 +1,7 @@
 import type { EventBus } from "./eventBus";
 import { RequestCallback } from "./request";
 import { BaseEvent, EventListenerMethod } from "./eventBus/types";
+import { GarbageCollector } from "../garbageCollector";
 export interface BaseModuleState {
     updated: number;
 }
@@ -13,6 +14,7 @@ export declare abstract class BaseModule<ModuleState extends BaseModuleState> {
     isPolling: boolean;
     isDataModule: boolean;
     private _eventBus;
+    garbageCollector: GarbageCollector;
     constructor(namespace: string);
     get byteboost(): import("../engine").ByteBoost;
     bindEventBus(eventBus: EventBus): void;
@@ -21,6 +23,7 @@ export declare abstract class BaseModule<ModuleState extends BaseModuleState> {
     on<PayloadType extends BaseEvent>(id: string, cb: EventListenerMethod<PayloadType>): void;
     onPoll(): void;
     receivePolls(): void;
+    bootPreload(): void;
     abstract boot(): void;
     cleanup(): void;
     abstract build(): ModuleState | Partial<ModuleState>;
