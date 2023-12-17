@@ -1,6 +1,6 @@
 import type { IPersistantData, Painpoint } from "./types";
 import { IModules } from "./types";
-export declare const BASE_API_URL = "https://dev.external.api.byteboost.io";
+export declare const BASE_API_URL = "https://external.api.byteboost.io";
 export declare class ByteBoost {
     modules: IModules;
     performance: typeof window.performance;
