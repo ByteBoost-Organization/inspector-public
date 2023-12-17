@@ -53,6 +53,6 @@ export declare abstract class BaseDataModule<ModuleState extends BaseModuleState
     stopSync(): void;
     startSync(sendImmediately?: boolean): void;
     doSync(sendImmediately?: boolean): void;
-    forceSend(): Promise<void>;
+    forceSend(): void;
 }
 export {};
