@@ -9,4 +9,5 @@ export declare class GarbageCollector {
     constructor(_module: BaseModule<any>);
     setOptimization(optimization: IGarbageOptimization): void;
     collect(): void;
+    getStateCount(): number;
 }

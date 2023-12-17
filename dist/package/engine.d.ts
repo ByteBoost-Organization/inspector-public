@@ -32,6 +32,7 @@ export declare class ByteBoost {
     compilePersistantData(): Promise<IPersistantData>;
     purge(): Promise<void>;
     getPersistantData(): IPersistantData | false;
+    logStateItems(): void;
     cleanup(): Promise<void>;
     getObfuscateLevel(): number;
 }
