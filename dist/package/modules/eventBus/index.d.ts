@@ -73,6 +73,7 @@ export declare class EventBus extends BaseModule<IData> {
     declareGarbage(app: string, id: string): void;
     private removeHandledEvents;
     private getHandledEvent;
+    private addHandledEvent;
     cleanSyncedData<Type extends BaseEvent[]>(data: Type, payload: SyncRequestPayload<any>): Type;
     isGarbageEvent(event: ByteEvent<any>): boolean;
     removeGarbageEvents(queue: ByteEvent<any>[]): ByteEvent<any>[];
