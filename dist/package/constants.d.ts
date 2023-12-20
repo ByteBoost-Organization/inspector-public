@@ -9,3 +9,4 @@ export declare const CLICK_GROUP_INTERVAL = 400;
 export declare const MINIMUM_TIME_BETWEEN_SCREENSHOTS = 5000;
 export declare const MINIMUM_TIME_BETWEEN_FORCED_SCREENSHOTS = 500;
 export declare const MAXIMUM_SESSION_REQUEST_RESPONSE_TIME = 1250;
+export declare const SESSION_INACTIVE_KILL_TIME = 300000;
