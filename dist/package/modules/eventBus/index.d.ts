@@ -67,6 +67,8 @@ export declare class EventBus extends BaseModule<IData> {
     enginePoll(): void;
     private after;
     sleep(ms: number): Promise<void>;
+    private _busHooks;
+    hookIntoBus(cb: (event: ByteEvent<any>) => void): void;
     private runEventContext;
     private dispatchNextProcessedEvent;
     private poll;

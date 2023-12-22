@@ -24,6 +24,7 @@ export declare class ByteBoost {
     isGatheringSession: boolean;
     unminify(): Promise<void>;
     getModule<Module>(namespace: keyof IModules): Module | undefined;
+    hookIntoEventBus(cb: VoidFunction): void;
     getApiKey(): string;
     debug(...rest: any[]): void;
     info(...rest: any[]): void;

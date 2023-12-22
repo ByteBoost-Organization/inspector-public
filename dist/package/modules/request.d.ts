@@ -7,8 +7,6 @@ export interface RequestDesciptor extends BaseEvent {
     data: any;
 }
 interface IData extends BaseModuleState {
-    apiKey: string;
-    requestQueue: [];
 }
 export interface RequestCallback extends BaseEvent {
     status: number;
