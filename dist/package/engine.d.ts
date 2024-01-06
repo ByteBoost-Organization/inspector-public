@@ -30,6 +30,7 @@ export declare class ByteBoost {
     info(...rest: any[]): void;
     warn(...rest: any[]): void;
     error(...rest: any[]): void;
+    forceInfoLog(...rest: any[]): void;
     compilePersistantData(): Promise<IPersistantData>;
     purge(): Promise<void>;
     getPersistantData(): IPersistantData | false;
