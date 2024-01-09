@@ -17,6 +17,7 @@ export declare class Navigations extends BaseDataModule<IState> {
     private _obfuscateLevel;
     constructor();
     get obfuscateLevel(): number;
+    private getCurrentUserPath;
     handlePath(): void;
     getFormattedPath(): string;
     onPoll(): void;
