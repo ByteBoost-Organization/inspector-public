@@ -1,0 +1,46 @@
+import type { IPersistantData, Painpoint } from "./types";
+import { IModules } from "./types";
+import { VersionManager } from "./versionManager";
+export declare const BASE_API_URL = "https://external.api.byteboost.io";
+export declare class ByteBoost {
+    modules: IModules;
+    versionManager: VersionManager;
+    performance: typeof window.performance;
+    navigator: typeof window.navigator;
+    initializedAt: number;
+    private apiKey;
+    private obfuscateLevel;
+    private _devMode;
+    minified: boolean;
+    painpoints: Painpoint[];
+    private inspectorId;
+    constructor(options: {
+        apiKey: string;
+        startByteboost: () => void;
+        obfuscateLevel: number;
+        painpoints: Painpoint[];
+        minified: boolean;
+    });
+    handleModuleSync(ifCanSendImmediately?: boolean): void;
+    initializeModules(): void;
+    onEventBusPoll(): void;
+    isGatheringSession: boolean;
+    unminify(): Promise<void>;
+    getModule<Module>(namespace: keyof IModules): Module | undefined;
+    hookIntoEventBus(cb: VoidFunction): void;
+    getApiKey(): string;
+    debug(...rest: any[]): void;
+    info(...rest: any[]): void;
+    warn(...rest: any[]): void;
+    error(...rest: any[]): void;
+    forceInfoLog(...rest: any[]): void;
+    compilePersistantData(): Promise<IPersistantData>;
+    purge(): Promise<void>;
+    getPersistantData(): IPersistantData | false;
+    logStateItems(): void;
+    logSessionStartTime(): void;
+    kill(): Promise<void>;
+    getDump(): Promise<void>;
+    cleanup(): Promise<void>;
+    getObfuscateLevel(): number;
+}

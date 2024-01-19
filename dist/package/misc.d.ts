@@ -1,0 +1,7 @@
+export declare function removeCircular(obj: any): any;
+export declare function findCircular(obj: any): boolean;
+export declare const compressString: (str?: string | null) => string;
+export declare const uncompressString: (str?: string | null) => string;
+export declare const randomString: (num: number) => string;
+export declare const tryParseNumber: (value: any) => number | false;
+export declare const isNumber: (value: any) => boolean;
